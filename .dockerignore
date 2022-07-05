@@ -1,0 +1,7 @@
+*
+
+!/.docker
+!/src
+!/tests
+!/Cargo.lock
+!/Cargo.toml

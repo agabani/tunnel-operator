@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [[bin]]
-name = "operator"
+name = "tunnel-operator"
 path = "src/bin/operator.rs"
 
 [dependencies]
