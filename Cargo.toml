@@ -1,0 +1,10 @@
+[package]
+name = "tunnel-operator"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "operator"
+path = "src/bin/operator.rs"
+
+[dependencies]
