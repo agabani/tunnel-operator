@@ -21,6 +21,7 @@ RUN cargo build --target x86_64-unknown-linux-musl --release
 # 1c: Build the application using the real source code
 COPY src/ src/
 
+RUN touch src/lib.rs
 RUN cargo build --target x86_64-unknown-linux-musl --release
 
 # 2: Copy the excutable and extra files to an empty Docker image
@@ -28,7 +29,10 @@ FROM scratch
 
 USER 10001:10001
 
-EXPOSE 80
+ENV TUNNEL_OPERATOR__HTTP_SERVER__HOST=0.0.0.0
+ENV TUNNEL_OPERATOR__HTTP_SERVER__PORT=8080
+
+EXPOSE 8080
 
 COPY --chown=0:0 --from=builder /home/appuser/app/target/x86_64-unknown-linux-musl/release/tunnel-operator tunnel-operator
 
