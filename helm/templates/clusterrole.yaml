@@ -1,0 +1,21 @@
+{{- if .Values.clusterRole.create -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "tunnel-operator.clusterRoleName" . }}
+  labels:
+    {{- include "tunnel-operator.labels" . | nindent 4 }}
+  {{- with .Values.clusterRole.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+rules:
+  - apiGroups:
+      - tunnel-operator.agabani.local
+    resources:
+      - tunnels
+    verbs:
+      - list
+      - patch
+      - watch
+{{- end }}

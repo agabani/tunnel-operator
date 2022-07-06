@@ -11,7 +11,7 @@ spec:
     plural: tunnels
     shortNames: []
     singular: tunnel
-  scope: Cluster
+  scope: Namespaced
   versions:
     - additionalPrinterColumns: []
       name: v1

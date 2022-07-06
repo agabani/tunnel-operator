@@ -1701,6 +1701,7 @@ version = "0.1.0"
 dependencies = [
  "axum",
  "config",
+ "futures",
  "hyper",
  "k8s-openapi",
  "kube",

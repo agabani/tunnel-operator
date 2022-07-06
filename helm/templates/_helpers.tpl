@@ -51,6 +51,39 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
+Create the name of the cluster role to use
+*/}}
+{{- define "tunnel-operator.clusterRoleName" -}}
+{{- if .Values.clusterRole.create }}
+{{- default (include "tunnel-operator.fullname" .) .Values.clusterRole.name }}
+{{- else }}
+{{- default "default" .Values.clusterRole.name }}
+{{- end }}
+{{- end }}
+
+{{/*
+Create the name of the cluster role binding to use
+*/}}
+{{- define "tunnel-operator.clusterRoleBindingName" -}}
+{{- if .Values.clusterRoleBinding.create }}
+{{- default (include "tunnel-operator.fullname" .) .Values.clusterRoleBinding.name }}
+{{- else }}
+{{- default "default" .Values.clusterRoleBinding.name }}
+{{- end }}
+{{- end }}
+
+{{/*
+Create the name of the namespace to use
+*/}}
+{{- define "tunnel-operator.namespaceName" -}}
+{{- if .Values.namespace.create }}
+{{- default (include "tunnel-operator.fullname" .) .Values.namespace.name }}
+{{- else }}
+{{- default "default" .Values.namespace.name }}
+{{- end }}
+{{- end }}
+
+{{/*
 Create the name of the service account to use
 */}}
 {{- define "tunnel-operator.serviceAccountName" -}}

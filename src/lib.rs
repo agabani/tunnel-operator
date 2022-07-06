@@ -4,6 +4,8 @@ pub mod configuration;
 
 pub mod crd;
 
+mod operator;
+
 pub mod server;
 
 mod route;

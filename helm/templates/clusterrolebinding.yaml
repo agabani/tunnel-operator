@@ -1,0 +1,20 @@
+{{- if .Values.clusterRoleBinding.create -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "tunnel-operator.clusterRoleBindingName" . }}
+  labels:
+    {{- include "tunnel-operator.labels" . | nindent 4 }}
+  {{- with .Values.clusterRoleBinding.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "tunnel-operator.serviceAccountName" . }}
+    namespace: {{ include "tunnel-operator.namespaceName" . }}
+roleRef:
+  kind: ClusterRole
+  name: {{ include "tunnel-operator.clusterRoleName" . }}
+  apiGroup: rbac.authorization.k8s.io
+{{- end }}
