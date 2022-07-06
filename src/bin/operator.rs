@@ -3,7 +3,7 @@ use tunnel_operator::{configuration, server, shutdown};
 
 #[tokio::main]
 async fn main() -> tunnel_operator::Result<()> {
-    set_up_logging()?;
+    tracing_subscriber::fmt::try_init()?;
 
     let configuration = configuration::load(&[])?;
 
@@ -16,8 +16,4 @@ async fn main() -> tunnel_operator::Result<()> {
     server::run(tcp_listener.into_std()?, shutdown::recv(), configuration).await?;
 
     Ok(())
-}
-
-fn set_up_logging() -> tunnel_operator::Result<()> {
-    tracing_subscriber::fmt::try_init()
 }

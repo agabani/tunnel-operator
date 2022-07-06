@@ -2,6 +2,8 @@
 
 pub mod configuration;
 
+pub mod crd;
+
 pub mod server;
 
 mod route;

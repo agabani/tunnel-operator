@@ -7,11 +7,20 @@ edition = "2021"
 name = "tunnel-operator"
 path = "src/bin/operator.rs"
 
+[[bin]]
+name = "crd-gen"
+path = "src/bin/crd_gen.rs"
+
 [dependencies]
 axum = "0.5.11"
 config = "0.13.1"
 hyper = { version = "0.14.19", features = ["full"] }
+k8s-openapi = { version = "0.15.0", features = ["v1_24"] }
+kube = { version = "0.73.1", default-features = false, features = ["client","derive","runtime","rustls-tls"] }
+schemars = { version = "0.8.10", features = ["chrono"] }
 serde = { version = "1.0.138", features = ["derive"] }
+serde_json = "1.0.82"
+serde_yaml = "0.8.24"
 tokio = { version = "1.19.2", features = ["full"] }
 tower = "0.4.13"
 tracing = "0.1.35"

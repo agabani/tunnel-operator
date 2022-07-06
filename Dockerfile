@@ -10,6 +10,7 @@ RUN apt update && \
 # 1b: Download and compile Rust dependencies using fake source code and store as a separate Docker layer
 WORKDIR /home/appuser/app
 
+COPY .docker/main.rs src/bin/crd_gen.rs
 COPY .docker/main.rs src/bin/operator.rs
 COPY .docker/lib.rs src/lib.rs
 
