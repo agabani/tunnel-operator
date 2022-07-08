@@ -11,7 +11,7 @@ metadata:
   {{- end }}
 rules:
   - apiGroups:
-      - tunnel-operator.agabani.local
+      - tunnel-operator.agabani
     resources:
       - tunnels
     verbs:

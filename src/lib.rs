@@ -2,9 +2,7 @@
 
 pub mod configuration;
 
-pub mod crd;
-
-mod operator;
+pub mod tunnel;
 
 pub mod server;
 
