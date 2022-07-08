@@ -84,6 +84,28 @@ Create the name of the namespace to use
 {{- end }}
 
 {{/*
+Create the name of the role to use
+*/}}
+{{- define "tunnel-operator.roleName" -}}
+{{- if .Values.role.create }}
+{{- default (include "tunnel-operator.fullname" .) .Values.role.name }}
+{{- else }}
+{{- default "default" .Values.role.name }}
+{{- end }}
+{{- end }}
+
+{{/*
+Create the name of the role binding to use
+*/}}
+{{- define "tunnel-operator.roleBindingName" -}}
+{{- if .Values.roleBinding.create }}
+{{- default (include "tunnel-operator.fullname" .) .Values.roleBinding.name }}
+{{- else }}
+{{- default "default" .Values.roleBinding.name }}
+{{- end }}
+{{- end }}
+
+{{/*
 Create the name of the service account to use
 */}}
 {{- define "tunnel-operator.serviceAccountName" -}}
