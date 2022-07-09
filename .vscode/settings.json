@@ -1,15 +1,17 @@
 {
-    "cSpell.words": [
-        "agabani",
-        "chrono",
-        "finalizer",
-        "kube",
-        "kubernetes",
-        "openapi",
-        "rustls",
-        "schemars",
-        "serde",
-        "sigint",
-        "sigterm"
-    ]
+  "cSpell.words": [
+    "agabani",
+    "chrono",
+    "finalizer",
+    "kube",
+    "kubernetes",
+    "localtunnel",
+    "localtunnels",
+    "openapi",
+    "rustls",
+    "schemars",
+    "serde",
+    "sigint",
+    "sigterm"
+  ]
 }

@@ -2,7 +2,7 @@ use std::{future::Future, net::TcpListener};
 
 use axum::{routing::get, Router, Server};
 
-use crate::{configuration, route, tunnel};
+use crate::{configuration, operators, route};
 
 /// # Errors
 ///
@@ -14,7 +14,8 @@ pub async fn run(
 ) -> crate::Result<()> {
     let socket_addr = tcp_listener.local_addr()?;
 
-    let (_operator, drainer) = tunnel::Operator::new().await?;
+    let (_localtunnel_operator, localtunnel_drainer) =
+        operators::localtunnel::Operator::new().await?;
 
     let app = Router::new()
         .route("/health/liveness", get(route::health_liveness_get))
@@ -27,7 +28,7 @@ pub async fn run(
     tracing::info!(%socket_addr, "Server started");
 
     tokio::select! {
-        _ = drainer => tracing::warn!("Operator stopped"),
+        _ = localtunnel_drainer => tracing::error!("LocalTunnel Operator stopped"),
         _ = server => tracing::info!("Server stopped"),
     }
 

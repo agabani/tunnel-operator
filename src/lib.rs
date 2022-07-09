@@ -2,7 +2,7 @@
 
 pub mod configuration;
 
-pub mod tunnel;
+pub mod operators;
 
 pub mod server;
 

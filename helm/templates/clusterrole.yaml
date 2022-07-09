@@ -13,7 +13,7 @@ rules:
   - apiGroups:
       - tunnel-operator.agabani
     resources:
-      - tunnels
+      - localtunnels
     verbs:
       - list
       - patch
